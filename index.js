@@ -1,42 +1,21 @@
 const express = require("express");
 const PORT = 8080;
 let app = express();
-const fs = require("fs");
 
-class Contenedor {
-  constructor(archivo) {
-    this.archivo = archivo;
-  }
-
-  getAll() {
-    app.get("/productos", (req, res, next) => {
-      let todosLosProductos = JSON.parse(
-        fs.readFileSync(archivoProductos.archivo, "utf-8")
-      );
-      res.send(todosLosProductos);
-    });
-  }
-
-  getRandom() {
-    app.get("/productoRandom", (req, res, next) => {
-      let todosLosProductos = JSON.parse(
-        fs.readFileSync(archivoProductos.archivo, "utf-8")
-      );
-      let productoRandom =
-        todosLosProductos[Math.floor(Math.random() * todosLosProductos.length)];
-      res.json(productoRandom);
-    });
-  }
-}
-
-const archivoProductos = new Contenedor("productos.txt");
-
-archivoProductos.getAll();
-archivoProductos.getRandom();
+let Contenedor = require("./contenedor");
+let archivoProductos = new Contenedor("productos.txt");
 
 app.get("/", (req, res, next) => {
   let response = `<h1 style="color:blue;font-family:'Roboto';font-size:35pt;">Bienvenidos al servidor express</h1>`;
   res.send(response);
+});
+
+app.get("/productos", (req, res, next) => {
+  res.send(archivoProductos.getAll());
+});
+
+app.get("/productoRandom", (req, res, next) => {
+  res.json(archivoProductos.getRandom());
 });
 
 app.listen(PORT, () => {
