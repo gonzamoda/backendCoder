@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const router = Router();
+let Contenedor = require("../components/contenedor");
 
-let datosProductos = [
+let data = [
   {
     id: 1,
     title: "Pelota de Fútbol",
@@ -19,54 +20,29 @@ let datosProductos = [
   },
 ];
 
+let datosProductos = new Contenedor(data);
+
 function serverRouter(app) {
   app.use("/api/productos", router);
 
   router.get("/", (req, res, next) => {
-    res.json(datosProductos);
+    res.json(datosProductos.getAll());
   });
 
   router.get("/:id", (req, res, next) => {
-    let buscandoPorId = datosProductos.find(
-      (element) => element.id == req.params.id
-    );
-    if (buscandoPorId) {
-      response = buscandoPorId;
-    } else {
-      response = "No existe un producto con ese ID";
-    }
-
-    res.json(response);
+    res.json(datosProductos.getProductById(req.params.id));
   });
 
   router.post("/", (req, res) => {
-    generadorID = datosProductos[datosProductos.length - 1].id + 1;
-    let objAdd = { id: generadorID, ...req.body };
-    res.json(datosProductos.push(objAdd));
+    res.json(datosProductos.postProduct(req.body));
   });
 
   router.put("/:id", (req, res) => {
-    let buscandoPorId = datosProductos.find(
-      (element) => element.id == req.params.id
-    );
-    if (buscandoPorId) {
-      response = { id: element.id, ...req.body };
-    } else {
-      response = `No existe un producto con ID: ${req.params.id}`;
-    }
-    res.json(response);
+    res.json(datosProductos.updateProduct(req.params.id, req.body));
   });
 
   router.delete("/:id", (req, res) => {
-    let buscandoPorId = datosProductos.find(
-      (element) => element.id == req.params.id
-    );
-    if (buscandoPorId) {
-      response = "Producto Eliminado";
-    } else {
-      response = `No existe un producto con ID: ${req.params.id}`;
-    }
-    res.json(response);
+    res.json(datosProductos.deleteProduct(req.params.id));
   });
 }
 
