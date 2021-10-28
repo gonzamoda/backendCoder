@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-let Contenedor = require("../components/contenedor");
+let Contenedor = require("../controller/contenedor");
 
 let data = [
   {

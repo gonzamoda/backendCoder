@@ -22,3 +22,7 @@ serverRoutes(app);
 app.listen(PORT, () => {
   console.log("conectado al servidor ", PORT);
 });
+
+// app.engine()
+// app.set("views", path.join(__dirname, "views"));
+// app.set("view engine", "ntl");

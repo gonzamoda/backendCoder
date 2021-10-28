@@ -24,16 +24,30 @@ class Contenedor {
   }
   updateProduct(id, cuerpo) {
     let buscandoPorId = this.productos.find((element) => element.id == id);
+    const updateProductById = (arr, viejo, nuevo) => {
+      let i = arr.indexOf(viejo);
+      i !== -1 && arr.splice(i, 1, nuevo);
+    };
+
     if (buscandoPorId) {
-      return { id: element.id, ...cuerpo };
+      let productoActualizado = { id, ...cuerpo };
+      return (
+        updateProductById(this.productos, buscandoPorId, productoActualizado),
+        this.productos
+      );
     } else {
       return `No existe un producto con ID: ${id}`;
     }
   }
   deleteProduct(id) {
     let buscandoPorId = this.productos.find((element) => element.id == id);
+    const removeItemById = (arr, item) => {
+      let i = arr.indexOf(item);
+      i !== -1 && arr.splice(i, 1);
+    };
+
     if (buscandoPorId) {
-      return "Producto Eliminado";
+      return removeItemById(this.productos, buscandoPorId), this.productos;
     } else {
       return `No existe un producto con ID: ${id}`;
     }
