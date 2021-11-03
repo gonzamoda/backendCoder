@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 class Contenedor {
   constructor(productos) {
     this.productos = productos;
