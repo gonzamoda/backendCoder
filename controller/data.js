@@ -12,7 +12,7 @@ let data = [
     title: "Pelota de Básquet",
     price: 2400,
     thumbnail:
-      "  https://http2.mlstatic.com/D_NQ_NP_2X_779325-MLA41541350597_042020-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_779325-MLA41541350597_042020-F.webp",
   },
 ];
 

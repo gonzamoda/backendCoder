@@ -1,0 +1,132 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="./socket.io/socket.io.js"></script>
+
+  </head>
+  <body>
+    <div
+      class="contenedor"
+      style="max-width: 700px; width: 100%; margin: 50px auto 0px"
+    >
+      <div>
+        <form id="productForm">
+          <div class="mb-3">
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              id="inputTitle"
+              placeholder="Title..."
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="number"
+              name="price"
+              class="form-control"
+              id="inputPrice"
+              placeholder="Price..."
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              name="thumbnail"
+              class="form-control"
+              id="inputThumbnail"
+              placeholder="Image URL..."
+            />
+          </div>
+          <button id="submitButton" class="btn btn-primary">Cargar producto</button>
+
+        </form>
+      </div>
+    </div>
+    <table
+      class="table mt-5"
+      style="max-width: 700px; width: 100%; margin: 50px auto 0px"
+    >
+      <thead>
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price</th>
+          <th scope="col">IMG</th>
+        </tr>
+      </thead>
+      <tbody id="listadoProductos">
+
+      </tbody>
+    </table>
+    <hr />
+
+    <div
+      class="mb-3"
+      style="max-width: 700px; width: 100%; margin: 50px auto 0px"
+    >
+      <input
+        placeholder="Escriba su e-mail..."
+        type="e-mail"
+        class="form-control"
+        id="inputMail"
+      />
+
+      <br />
+
+      <div id="contenedorChat">
+
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-10">
+            <input
+              placeholder="Escriba mensaje en el chat..."
+              type="text"
+              class="form-control"
+              id="inputChat"
+            />
+
+          </div>
+          <div class="col">
+            <button id="chatButton" class="btn btn-primary">Enviar</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    ></script>
+    <script src="public/utils.js"></script>
+    <script src="public/sockets.js"></script>
+    <script src="public/main.js"></script>
+
+  </body>
+</html>
